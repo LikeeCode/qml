@@ -9,7 +9,7 @@ Window {
 
     Image{
         id: img01
-        source: "qrc:/Hamilton/images/img_01.png"
+        source: "images/img_01.png"
         anchors.centerIn: parent
     }
 }
