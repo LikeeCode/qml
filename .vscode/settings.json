@@ -4,6 +4,7 @@
     ],
     "files.associations": {
         "qqmlapplicationengine": "cpp",
-        "qlist": "cpp"
+        "qlist": "cpp",
+        "qobject": "cpp"
     }
 }

@@ -18,6 +18,8 @@ qt_add_executable(HamiltonQMLPlayer
     model/SongModel.cpp
     model/PlayerModel.h
     model/PlayerModel.cpp
+    viewModel/ViewModel.h
+    viewModel/ViewModel.cpp
 )
 
 # Windows icon
