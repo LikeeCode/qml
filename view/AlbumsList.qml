@@ -73,19 +73,23 @@ Item{
 
             MouseArea{
                 anchors.fill: parent
+                hoverEnabled: true
+
                 onClicked: {
-                    console.log("Album clicked: " + title)
                     viewModel.setActiveAlbum(title)
                 }
-                hoverEnabled: true
                 onEntered: { 
                     color = '#666688'
                 }
                 onExited: {
                     updateColor()
                 }
-                onPressed: { color = '#222244'}
-                onReleased: { color = '#666688'}
+                onPressed: {
+                    color = '#222244'
+                }
+                onReleased: {
+                    updateColor()
+                }
             }
         }
     }
