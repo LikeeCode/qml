@@ -10,9 +10,9 @@ class ViewModel : public QObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(AlbumModel *albumModel READ getAlbumModel WRITE setAlbumModel NOTIFY AlbumModelChanged)
-    Q_PROPERTY(PlayerModel *playerModel READ getPlayerModel WRITE setPlayerModel NOTIFY PlayerModelChanged)
-    Q_PROPERTY(SongModel *songModel READ getSongModel WRITE setSongModel NOTIFY SongModelChanged)
+    Q_PROPERTY(AlbumModel *albumModel READ getAlbumModel WRITE setAlbumModel NOTIFY albumModelChanged)
+    Q_PROPERTY(PlayerModel *playerModel READ getPlayerModel WRITE setPlayerModel NOTIFY playerModelChanged)
+    Q_PROPERTY(SongModel *songModel READ getSongModel WRITE setSongModel NOTIFY songModelChanged)
 
     AlbumModel *albumModel{nullptr};
     PlayerModel *playerModel{nullptr};
@@ -21,7 +21,7 @@ class ViewModel : public QObject
 public:
     explicit ViewModel(QObject *parent = nullptr);
 
-    signals:
+signals:
     void albumModelChanged();
     void playerModelChanged();
     void songModelChanged();
@@ -36,12 +36,7 @@ public slots:
     SongModel* getSongModel() const { return songModel; }
     void setSongModel(SongModel* model);
 
-signals:
-    void AlbumModelChanged();
-    void SongModelChanged();
-    void PlayerModelChanged();
-
 private:
-    void createAlbumsList();
-    void createSongsList();
+    // void createAlbumsList();
+    // void createSongsList();
 };
