@@ -2,6 +2,10 @@
 #include <QQmlApplicationEngine>
 #include <QIcon>
 
+#include "models/AlbumModel.h"
+#include "models/PlayerModel.h"
+#include "models/SongModel.h"
+
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
@@ -15,7 +19,9 @@ int main(int argc, char *argv[])
         []()
         { QCoreApplication::exit(-1); },
         Qt::QueuedConnection);
-    
+
+    qmlRegisterType<AlbumModel>("AlbumModel", 1, 0, "AlbumModel");
+
     const QUrl url("qrc:/Hamilton/main.qml");
     engine.load(url);
 

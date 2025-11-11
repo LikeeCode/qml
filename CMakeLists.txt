@@ -8,10 +8,16 @@ set(CMAKE_AUTOUIC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 6.8 COMPONENTS Quick REQUIRED)
+find_package(Qt6 6.8 COMPONENTS Quick Core REQUIRED)
 
 qt_add_executable(HamiltonQMLPlayer
     main.cpp
+    models/AlbumModel.h
+    models/AlbumModel.cpp
+    models/SongModel.h
+    models/SongModel.cpp
+    models/PlayerModel.h
+    models/PlayerModel.cpp
 )
 
 # Windows icon
@@ -32,4 +38,4 @@ qt_add_qml_module(HamiltonQMLPlayer
 )
 
 target_link_libraries(HamiltonQMLPlayer
-    PRIVATE Qt6::Quick)
+    PRIVATE Qt6::Quick Qt6::Core)
