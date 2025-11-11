@@ -33,11 +33,6 @@ void ViewModel::createAlbumsList()
     if (!albumModel) {
         albumModel = new AlbumModel(this);
     }
-
-    albumModel->addAlbum("Abbey Road", "The Beatles", 1969, "covers/abbey_road.jpg");
-    albumModel->addAlbum("The Dark Side of the Moon", "Pink Floyd", 1973, "covers/dark_side_moon.jpg");
-    albumModel->addAlbum("Thriller", "Michael Jackson", 1982, "covers/thriller.jpg");
-    albumModel->addAlbum("Back in Black", "AC/DC", 1980, "covers/back_in_black.jpg");
 }
 
 void ViewModel::createSongsList()
@@ -45,9 +40,4 @@ void ViewModel::createSongsList()
     if (!songModel) {
         songModel = new SongModel(this);
     }
-
-    songModel->addSong("Come Together", "The Beatles", 259, "Abbey Road");
-    songModel->addSong("Money", "Pink Floyd", 382, "The Dark Side of the Moon");
-    songModel->addSong("Billie Jean", "Michael Jackson", 294, "Thriller");
-    songModel->addSong("Hells Bells", "AC/DC", 312, "Back in Black");
 }

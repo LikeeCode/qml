@@ -37,6 +37,6 @@ public slots:
     void setSongModel(SongModel* model);
 
 private:
-    // void createAlbumsList();
-    // void createSongsList();
+    void createAlbumsList();
+    void createSongsList();
 };
