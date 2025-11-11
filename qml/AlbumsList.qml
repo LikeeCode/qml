@@ -8,6 +8,8 @@ Item{
         id: header
         width: parent.width
         height: parent.height
-        color: '#ffbbbb'
+        color: '#373647'
+        border.color: '#4a4a64'
+        border.width: 1
     }
 }
