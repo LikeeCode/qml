@@ -18,6 +18,7 @@ qt_add_executable(HamiltonQMLPlayer
     model/SongModel.cpp
     model/PlayerModel.h
     model/PlayerModel.cpp
+    viewModel/MediaList.h
     viewModel/ViewModel.h
     viewModel/ViewModel.cpp
 )

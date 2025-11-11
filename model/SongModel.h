@@ -4,9 +4,17 @@
 #include <QObject>
 #include <QList>
 
+struct Song {
+    QString title;
+    QString artist;
+    int duration; // in seconds
+    QString album;
+};
+
 class SongModel : public QAbstractListModel
 {
     Q_OBJECT
+
 public:
     enum SongRoles {
         TitleRole = Qt::UserRole + 1,
@@ -21,12 +29,7 @@ public:
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
     QHash<int, QByteArray> roleNames() const override;
     void addSong(const QString &title, const QString &artist, int duration, const QString &album);
+
 private:
-    struct Song {
-        QString title;
-        QString artist;
-        int duration; // in seconds
-        QString album;
-    };
     QList<Song> m_songs;
 };
