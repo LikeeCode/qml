@@ -103,9 +103,7 @@ Item{
             id: albumsListView
             width: parent.width
             height: parent.height
-            model: AlbumModel{
-                id: albumModel
-            }
+            model: viewModel.getAlbumModel()
             delegate: albumDelegate
         }
     }
