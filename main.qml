@@ -8,8 +8,10 @@ Window {
     title: "Hamilton"
 
     Image{
-        id: img01
-        source: "images/img_01.png"
+        id: logo
+        source: "images/hamilton-logo.ico"
         anchors.centerIn: parent
+        width: 400
+        fillMode: Image.PreserveAspectFit
     }
 }
