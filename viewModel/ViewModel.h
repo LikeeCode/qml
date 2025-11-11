@@ -40,6 +40,7 @@ public slots:
 
     // qml invokable methods
     void setActiveAlbum(const QString& albumTitle);
+    QString getActiveAlbum() const { return currentAlbum; }
     void playTrack(const QString& trackTitle);
     void pauseTrack();
     void nextTrack();

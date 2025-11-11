@@ -42,6 +42,8 @@ void ViewModel::setActiveAlbum(const QString& albumTitle) {
         //     }
         // }
     }
+
+    activeAlbumChanged(albumTitle);
 }
 
 void ViewModel::playTrack(const QString& trackTitle) {

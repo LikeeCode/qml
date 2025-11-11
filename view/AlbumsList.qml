@@ -16,11 +16,30 @@ Item{
 
     Component{
         id: albumDelegate
-
         Rectangle{
+            property bool isActive: false
+
+            function updateColor() {
+                if(isActive) {
+                    color = '#7777a8'
+                } else {
+                    color = index % 2 === 0 ? '#444466' : '#3b3b5b'
+                }
+            }
+
+            Connections {
+                target: viewModel
+                onActiveAlbumChanged: function(newAlbum) {
+                    isActive = (title === newAlbum)
+                    updateColor()
+                }
+            }
+
             width: parent.width
             height: 100
-            color: index % 2 === 0 ? '#444466' : '#3b3b5b'
+            color: {
+                updateColor()
+            }
             border.color: '#4a4a64'
             border.width: 1
 
@@ -50,6 +69,23 @@ Item{
                         color: '#cccccc'
                     }
                 }
+            }
+
+            MouseArea{
+                anchors.fill: parent
+                onClicked: {
+                    console.log("Album clicked: " + title)
+                    viewModel.setActiveAlbum(title)
+                }
+                hoverEnabled: true
+                onEntered: { 
+                    color = '#666688'
+                }
+                onExited: {
+                    updateColor()
+                }
+                onPressed: { color = '#222244'}
+                onReleased: { color = '#666688'}
             }
         }
     }
