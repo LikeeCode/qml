@@ -5,8 +5,6 @@
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
-    // Use the QML module URI prefix (Hamilton) to access embedded resources.
-    // Resources added via qt_add_qml_module(... RESOURCES ...) are prefixed with qrc:/<URI>/
     app.setWindowIcon(QIcon("qrc:/Hamilton/images/hamilton-logo.ico"));
 
     QQmlApplicationEngine engine;
