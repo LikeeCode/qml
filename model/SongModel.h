@@ -29,6 +29,7 @@ public:
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
     QHash<int, QByteArray> roleNames() const override;
     void addSong(const QString &title, const QString &artist, int duration, const QString &album);
+    void clearSongs();
 
 private:
     QList<Song> m_songs;

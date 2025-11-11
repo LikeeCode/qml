@@ -25,6 +25,8 @@ signals:
     void albumModelChanged();
     void playerModelChanged();
     void songModelChanged();
+    void activeAlbumChanged(const QString& albumTitle);
+    void trackChanged(const QString& trackTitle);
 
 public slots:
     AlbumModel* getAlbumModel() const { return albumModel; }
@@ -36,7 +38,15 @@ public slots:
     SongModel* getSongModel() const { return songModel; }
     void setSongModel(SongModel* model);
 
+    // qml invokable methods
+    void setActiveAlbum(const QString& albumTitle);
+    void playTrack(const QString& trackTitle);
+    void pauseTrack();
+    void nextTrack();
+    void previousTrack();
+
 private:
-    void createAlbumsList();
-    void createSongsList();
+    QString currentAlbum;
+    QString currentTrack;
+    int currentPosition{0};
 };

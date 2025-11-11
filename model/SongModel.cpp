@@ -48,3 +48,10 @@ void SongModel::addSong(const QString &title, const QString &artist, int duratio
     m_songs.append({title, artist, duration, album});
     endInsertRows();
 }
+
+void SongModel::clearSongs()
+{
+    beginResetModel();
+    m_songs.clear();
+    endResetModel();
+}

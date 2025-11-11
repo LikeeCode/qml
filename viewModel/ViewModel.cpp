@@ -29,21 +29,36 @@ void ViewModel::setSongModel(SongModel* model) {
     emit songModelChanged();
 }
 
-void ViewModel::createAlbumsList()
-{
-    if (!albumModel) {
-        albumModel = new AlbumModel(this);
-    }
+void ViewModel::setActiveAlbum(const QString& albumTitle) {
+    currentAlbum = albumTitle;
+    // Load songs for the selected album into the songModel
+    if (songModel) {
+        // Clear existing songs
+        songModel->clearSongs();
 
-    albumModel->addAlbum(albumsList["Abbey Road"]);
-    albumModel->addAlbum(albumsList["The Dark Side of the Moon"]);
-    albumModel->addAlbum(albumsList["Thriller"]);
-    albumModel->addAlbum(albumsList["Back in Black"]);
+        // Add songs from the selected album
+        if (songsList.contains(albumTitle)) {
+            for (const Song& song : songsList[albumTitle]) {
+                songModel->addSong(song.title, song.artist, song.duration, song.album);
+            }
+        }
+    }
 }
 
-void ViewModel::createSongsList()
-{
-    if (!songModel) {
-        songModel = new SongModel(this);
-    }
+void ViewModel::playTrack(const QString& trackTitle) {
+    currentTrack = trackTitle;
+    // Logic to play the track
+    emit trackChanged(trackTitle);
+}
+
+void ViewModel::pauseTrack() {
+    // Logic to pause the track
+}
+
+void ViewModel::nextTrack() {
+    // Logic to go to the next track
+}
+
+void ViewModel::previousTrack() {
+    // Logic to go to the previous track
 }
