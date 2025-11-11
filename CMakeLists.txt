@@ -12,12 +12,12 @@ find_package(Qt6 6.8 COMPONENTS Quick Core REQUIRED)
 
 qt_add_executable(HamiltonQMLPlayer
     main.cpp
-    models/AlbumModel.h
-    models/AlbumModel.cpp
-    models/SongModel.h
-    models/SongModel.cpp
-    models/PlayerModel.h
-    models/PlayerModel.cpp
+    model/AlbumModel.h
+    model/AlbumModel.cpp
+    model/SongModel.h
+    model/SongModel.cpp
+    model/PlayerModel.h
+    model/PlayerModel.cpp
 )
 
 # Windows icon

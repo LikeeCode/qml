@@ -2,9 +2,9 @@
 #include <QQmlApplicationEngine>
 #include <QIcon>
 
-#include "models/AlbumModel.h"
-#include "models/PlayerModel.h"
-#include "models/SongModel.h"
+#include "model/AlbumModel.h"
+#include "model/PlayerModel.h"
+#include "model/SongModel.h"
 
 int main(int argc, char *argv[])
 {

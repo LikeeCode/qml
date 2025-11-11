@@ -1,5 +1,6 @@
 import QtQuick
 import QtQuick.Controls
+import AlbumModel 1.0
 
 Item{
     id: root
