@@ -6,6 +6,7 @@
         "qqmlapplicationengine": "cpp",
         "qlist": "cpp",
         "qobject": "cpp",
-        "chrono": "cpp"
+        "chrono": "cpp",
+        "variant": "cpp"
     }
 }

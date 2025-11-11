@@ -35,6 +35,16 @@ int main(int argc, char *argv[])
     // as a context property named "viewModel" (lowercase) for easy access.
     ViewModel *viewModel = new ViewModel(&app);
     QQmlEngine::setObjectOwnership(viewModel, QQmlEngine::CppOwnership);
+    
+    // Create and attach models to the ViewModel
+    AlbumModel *albumModel = new AlbumModel();
+    PlayerModel *playerModel = new PlayerModel();
+    SongModel *songModel = new SongModel();
+    
+    viewModel->setAlbumModel(albumModel);
+    viewModel->setPlayerModel(playerModel);
+    viewModel->setSongModel(songModel);
+    
     engine.rootContext()->setContextProperty("viewModel", viewModel);
 
     const QUrl url("qrc:/Hamilton/main.qml");
