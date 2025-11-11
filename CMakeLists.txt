@@ -12,13 +12,13 @@ find_package(Qt6 6.8 COMPONENTS Quick Core REQUIRED)
 
 qt_add_executable(HamiltonQMLPlayer
     main.cpp
+    model/MediaList.h
     model/AlbumModel.h
     model/AlbumModel.cpp
     model/SongModel.h
     model/SongModel.cpp
     model/PlayerModel.h
     model/PlayerModel.cpp
-    viewModel/MediaList.h
     viewModel/ViewModel.h
     viewModel/ViewModel.cpp
 )
@@ -38,6 +38,7 @@ qt_add_qml_module(HamiltonQMLPlayer
     RESOURCES
         images/hamilton-logo.svg
         images/hamilton-logo.ico
+        images/album-cover-default.png
 )
 
 target_link_libraries(HamiltonQMLPlayer

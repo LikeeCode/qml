@@ -1,5 +1,4 @@
 #include "ViewModel.h"
-#include "MediaList.h"
 
 ViewModel::ViewModel(QObject *parent) : QObject(parent)
 {
@@ -37,11 +36,11 @@ void ViewModel::setActiveAlbum(const QString& albumTitle) {
         songModel->clearSongs();
 
         // Add songs from the selected album
-        if (songsList.contains(albumTitle)) {
-            for (const Song& song : songsList[albumTitle]) {
-                songModel->addSong(song.title, song.artist, song.duration, song.album);
-            }
-        }
+        // if (songsList.contains(albumTitle)) {
+        //     for (const Song& song : songsList[albumTitle]) {
+        //         songModel->addSong(song.title, song.artist, song.duration, song.album);
+        //     }
+        // }
     }
 }
 

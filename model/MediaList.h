@@ -7,10 +7,10 @@
 #include "model/SongModel.h"
 
 QHash<QString, Album> albumsList{
-    {"Abbey Road", {"Abbey Road", "The Beatles", 1969, "covers/abbey_road.jpg"}},
-    {"The Dark Side of the Moon", {"The Dark Side of the Moon", "Pink Floyd", 1973, "covers/dark_side_moon.jpg"}},
-    {"Thriller", {"Thriller", "Michael Jackson", 1982, "covers/thriller.jpg"}},
-    {"Back in Black", {"Back in Black", "AC/DC", 1980, "covers/back_in_black.jpg"}}};
+    {"Abbey Road", {"Abbey Road", "The Beatles", 1969, "images/album-cover-default.png"}},
+    {"The Dark Side of the Moon", {"The Dark Side of the Moon", "Pink Floyd", 1973, "images/album-cover-default.png"}},
+    {"Thriller", {"Thriller", "Michael Jackson", 1982, "images/album-cover-default.png"}},
+    {"Back in Black", {"Back in Black", "AC/DC", 1980, "images/album-cover-default.png"}}};
 
 QHash<QString, QList<Song>> songsList{
     {"Abbey Road", {

@@ -1,8 +1,13 @@
 #include "AlbumModel.h"
+#include "MediaList.h"
 
 AlbumModel::AlbumModel(QObject *parent)
     : QAbstractListModel(parent)
 {
+    for (auto album: albumsList)
+    {
+        addAlbum(album);
+    }
 }
 
 int AlbumModel::rowCount(const QModelIndex &parent) const
