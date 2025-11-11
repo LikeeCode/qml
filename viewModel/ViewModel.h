@@ -10,9 +10,9 @@ class ViewModel : public QObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(AlbumModel *albumModel READ getAlbumModel WRITE setAlbumModel NOTIFY albumModelChanged)
-    Q_PROPERTY(PlayerModel *playerModel READ getPlayerModel WRITE setPlayerModel NOTIFY playerModelChanged)
-    Q_PROPERTY(SongModel *songModel READ getSongModel WRITE setSongModel NOTIFY songModelChanged)
+    Q_PROPERTY(AlbumModel *albumModel READ getAlbumModel WRITE setAlbumModel)
+    Q_PROPERTY(PlayerModel *playerModel READ getPlayerModel WRITE setPlayerModel)
+    Q_PROPERTY(SongModel *songModel READ getSongModel WRITE setSongModel)
 
     AlbumModel *albumModel{nullptr};
     PlayerModel *playerModel{nullptr};
@@ -22,11 +22,8 @@ public:
     explicit ViewModel(QObject *parent = nullptr);
 
 signals:
-    void albumModelChanged();
-    void playerModelChanged();
-    void songModelChanged();
-    void activeAlbumChanged(const QString& albumTitle);
-    void trackChanged(const QString& trackTitle);
+    void albumChanged(const QString& albumTitle);
+    void songChanged(const QString& albumCover);
 
 public slots:
     AlbumModel* getAlbumModel() const { return albumModel; }
@@ -38,9 +35,7 @@ public slots:
     SongModel* getSongModel() const { return songModel; }
     void setSongModel(SongModel* model);
 
-    // qml invokable methods
-    void setActiveAlbum(const QString& albumTitle);
-    QString getActiveAlbum() const { return currentAlbum; }
+    void setAlbum(const QString& albumTitle);
     void playTrack(const QString& trackTitle);
     void pauseTrack();
     void nextTrack();
@@ -48,6 +43,7 @@ public slots:
 
 private:
     QString currentAlbum;
+    QString currentAlbumCover;
     QString currentTrack;
     int currentPosition{0};
 };

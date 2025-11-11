@@ -13,6 +13,7 @@ find_package(Qt6 6.8 COMPONENTS Quick Core REQUIRED)
 qt_add_executable(HamiltonQMLPlayer
     main.cpp
     model/MediaList.h
+    model/MediaList.cpp
     model/AlbumModel.h
     model/AlbumModel.cpp
     model/SongModel.h

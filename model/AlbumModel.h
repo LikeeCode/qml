@@ -4,12 +4,7 @@
 #include <QObject>
 #include <QList>
 
-struct Album {
-    QString title;
-    QString artist;
-    int year;
-    QString cover;
-};
+#include "MediaList.h"
 
 class AlbumModel : public QAbstractListModel
 {
@@ -30,6 +25,7 @@ public:
     void addAlbum(const Album &album);
     void addAlbum(const QString &title, const QString &artist, int year, const QString &cover);
     void removeAlbum(const QString &title);
+    QString getAlbumCover(const QString &title) const;
 
 private:
     QList<Album> m_albums;

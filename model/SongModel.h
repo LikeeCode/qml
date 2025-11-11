@@ -4,12 +4,7 @@
 #include <QObject>
 #include <QList>
 
-struct Song {
-    QString title;
-    QString artist;
-    int duration; // in seconds
-    QString album;
-};
+#include "MediaList.h"
 
 class SongModel : public QAbstractListModel
 {
@@ -29,8 +24,16 @@ public:
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
     QHash<int, QByteArray> roleNames() const override;
     void addSong(const QString &title, const QString &artist, int duration, const QString &album);
-    void clearSongs();
+    
+    void setAlbum(const QString& album);
+    void setSong(const QString& song);
+
+signals:
+    void albumChanged(const QString& album);
+    void songChanged(const Song& song);
 
 private:
     QList<Song> m_songs;
+
+    void clearSongs();
 };

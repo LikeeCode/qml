@@ -9,7 +9,6 @@ void ViewModel::setAlbumModel(AlbumModel* model) {
     if (albumModel) albumModel->deleteLater(); // or allow ownership transfer
     albumModel = model;
     if (albumModel) albumModel->setParent(this);
-    emit albumModelChanged();
 }
 
 void ViewModel::setPlayerModel(PlayerModel* model) {
@@ -17,39 +16,33 @@ void ViewModel::setPlayerModel(PlayerModel* model) {
     if (playerModel) playerModel->deleteLater(); // or allow ownership transfer
     playerModel = model;
     if (playerModel) playerModel->setParent(this);
-    emit playerModelChanged();
 }
 
 void ViewModel::setSongModel(SongModel* model) {
     if (songModel == model) return;
     if (songModel) songModel->deleteLater(); // or allow ownership transfer
     songModel = model;
-    if (songModel) songModel->setParent(this);
-    emit songModelChanged();
+    if (songModel){
+        songModel->setParent(this);
+        connect(songModel, &SongModel::albumChanged, this, [this](const QString &album){
+            currentAlbum = album;
+            emit albumChanged(currentAlbum); });
+    }
 }
 
-void ViewModel::setActiveAlbum(const QString& albumTitle) {
+void ViewModel::setAlbum(const QString& albumTitle) {
     currentAlbum = albumTitle;
-    // Load songs for the selected album into the songModel
     if (songModel) {
-        // Clear existing songs
-        songModel->clearSongs();
-
-        // Add songs from the selected album
-        // if (songsList.contains(albumTitle)) {
-        //     for (const Song& song : songsList[albumTitle]) {
-        //         songModel->addSong(song.title, song.artist, song.duration, song.album);
-        //     }
-        // }
+        songModel->setAlbum(currentAlbum);
     }
-
-    activeAlbumChanged(albumTitle);
 }
 
 void ViewModel::playTrack(const QString& trackTitle) {
     currentTrack = trackTitle;
-    // Logic to play the track
-    emit trackChanged(trackTitle);
+    if (songModel)
+    {
+        songModel->setSong(currentTrack);
+    }
 }
 
 void ViewModel::pauseTrack() {

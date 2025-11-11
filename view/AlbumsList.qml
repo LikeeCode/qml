@@ -29,7 +29,7 @@ Item{
 
             Connections {
                 target: viewModel
-                onActiveAlbumChanged: function(newAlbum) {
+                onAlbumChanged: function(newAlbum) {
                     isActive = (title === newAlbum)
                     updateColor()
                 }
@@ -76,7 +76,7 @@ Item{
                 hoverEnabled: true
 
                 onClicked: {
-                    viewModel.setActiveAlbum(title)
+                    viewModel.setAlbum(title)
                 }
                 onEntered: { 
                     color = '#666688'

@@ -1,5 +1,4 @@
 #include "AlbumModel.h"
-#include "MediaList.h"
 
 AlbumModel::AlbumModel(QObject *parent)
     : QAbstractListModel(parent)
@@ -71,4 +70,17 @@ void AlbumModel::removeAlbum(const QString &title)
             return;
         }
     }
+}
+
+QString AlbumModel::getAlbumCover(const QString &title) const
+{
+    if(m_albums.isEmpty()) return QString();
+
+    for (const Album &album : m_albums) {
+        if (album.title == title) {
+            return album.cover;
+        }
+    }
+
+    return QString(); // Return an empty string if album not found
 }

@@ -49,6 +49,29 @@ void SongModel::addSong(const QString &title, const QString &artist, int duratio
     endInsertRows();
 }
 
+void SongModel::setAlbum(const QString& albumTitle)
+{
+    if (songsList.contains(albumTitle))
+    {
+        m_songs.clear();
+        m_songs = songsList[albumTitle];
+        beginResetModel();
+        emit albumChanged(albumTitle);
+    }
+}
+
+void SongModel::setSong(const QString& songTitle)
+{
+    for (const Song& song : m_songs)
+    {
+        if (song.title == songTitle)
+        {
+            emit songChanged(song);
+            break;
+        }
+    }
+}
+
 void SongModel::clearSongs()
 {
     beginResetModel();
