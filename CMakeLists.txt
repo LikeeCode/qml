@@ -29,9 +29,9 @@ qt_add_qml_module(HamiltonQMLPlayer
     URI Hamilton
     VERSION 1.0
     QML_FILES main.qml
-        qml/AlbumsList.qml
-        qml/NowPlayingView.qml
-        qml/SongsList.qml
+        view/AlbumsList.qml
+        view/NowPlayingView.qml
+        view/SongsList.qml
     RESOURCES
         images/hamilton-logo.svg
         images/hamilton-logo.ico
