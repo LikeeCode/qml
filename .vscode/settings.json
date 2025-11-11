@@ -5,6 +5,7 @@
     "files.associations": {
         "qqmlapplicationengine": "cpp",
         "qlist": "cpp",
-        "qobject": "cpp"
+        "qobject": "cpp",
+        "chrono": "cpp"
     }
 }

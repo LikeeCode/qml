@@ -27,6 +27,7 @@ public:
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
     QHash<int, QByteArray> roleNames() const override;
+    void addAlbum(const Album &album);
     void addAlbum(const QString &title, const QString &artist, int year, const QString &cover);
     void removeAlbum(const QString &title);
 

@@ -42,6 +42,13 @@ QHash<int, QByteArray> AlbumModel::roleNames() const
     return roles;
 }
 
+void AlbumModel::addAlbum(const Album &album)
+{
+    beginInsertRows(QModelIndex(), m_albums.count(), m_albums.count());
+    m_albums.append(album);
+    endInsertRows();
+}
+
 void AlbumModel::addAlbum(const QString &title, const QString &artist, int year, const QString &cover)
 {
     beginInsertRows(QModelIndex(), m_albums.count(), m_albums.count());

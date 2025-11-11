@@ -1,4 +1,5 @@
 #include "ViewModel.h"
+#include "MediaList.h"
 
 ViewModel::ViewModel(QObject *parent) : QObject(parent)
 {
@@ -33,6 +34,11 @@ void ViewModel::createAlbumsList()
     if (!albumModel) {
         albumModel = new AlbumModel(this);
     }
+
+    albumModel->addAlbum(albumsList["Abbey Road"]);
+    albumModel->addAlbum(albumsList["The Dark Side of the Moon"]);
+    albumModel->addAlbum(albumsList["Thriller"]);
+    albumModel->addAlbum(albumsList["Back in Black"]);
 }
 
 void ViewModel::createSongsList()
