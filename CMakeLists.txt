@@ -14,8 +14,7 @@ qt_add_executable(HamiltonQMLPlayer
     main.cpp
 )
 
-# On Windows, add the RC (resource) file to embed the application icon
-# into the executable so it appears in Explorer, taskbar, etc.
+# Windows icon
 if(WIN32)
     target_sources(HamiltonQMLPlayer PRIVATE "${CMAKE_CURRENT_LIST_DIR}/appicon.rc")
 endif()
@@ -24,6 +23,9 @@ qt_add_qml_module(HamiltonQMLPlayer
     URI Hamilton
     VERSION 1.0
     QML_FILES main.qml
+        qml/AlbumsList.qml
+        qml/NowPlayingView.qml
+        qml/SongsList.qml
     RESOURCES
         images/hamilton-logo.svg
         images/hamilton-logo.ico
