@@ -21,6 +21,7 @@ int main(int argc, char *argv[])
         Qt::QueuedConnection);
 
     qmlRegisterType<AlbumModel>("AlbumModel", 1, 0, "AlbumModel");
+    qmlRegisterType<SongModel>("SongModel", 1, 0, "SongModel");
 
     const QUrl url("qrc:/Hamilton/main.qml");
     engine.load(url);
