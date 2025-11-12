@@ -25,6 +25,14 @@ Item{
                     }
                 }
 
+                function formatTime(duration) {
+                    var minutes = Math.floor(duration / 60)
+                    var seconds = duration % 60
+
+                    var secondsString = (seconds < 10 ? "0" : "") + seconds
+                    return minutes + ":" + secondsString
+                }
+
                 Connections {
                     target: viewModel
                     function onSongChanged(song, artist, duration, album) {
@@ -34,7 +42,7 @@ Item{
                 }
 
                 width: header.width
-                height: 100
+                height: 60
                 color: {
                     updateColor()
                 }
@@ -48,11 +56,24 @@ Item{
 
                     Column{
                         spacing: 5
+                        width: parent.width
 
-                        Text{
-                            text: title
-                            font.bold: true
-                            color: '#ffffff'
+                        Row{
+                            width: parent.width
+                            spacing: 5
+
+                            Text{
+                                text: title
+                                font.bold: true
+                                color: '#ffffff'
+                                width: 3 * parent.width / 4
+                            }
+                            Text{
+                                text: formatTime(duration)
+                                font.bold: true
+                                color: '#bebebe'
+                                width: parent.width / 4
+                            }
                         }
 
                         Text{
