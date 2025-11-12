@@ -105,14 +105,29 @@ Item {
                 radius: 0
                 z: 100
 
-                // The thumb's color will be controlled by states
-                color: vbar.pressed ? "#9999c0" : "#7777a8"
-                // opacity: vbar.pressed ? 0.9 : 0.75
+                // 1. Set the default appearance
+                color: "#7777a8"
 
-                // This behavior makes the press/release color change instant,
-                // which feels more responsive for a button-like interaction.
-                // Behavior on color { Animation { duration: 50 } }
-                // Behavior on opacity { Animation { duration: 50 } }
+                // 2. Define the different visual states
+                states: [
+                    State {
+                        name: "HOVERED"
+                        // This state is active when hovered but NOT pressed
+                        when: vbar.hovered && !vbar.pressed
+                        PropertyChanges {
+                            target: thumb
+                            color: "#8888b9" // A color between normal and pressed
+                        }
+                    },
+                    State {
+                        name: "PRESSED"
+                        when: vbar.pressed
+                        PropertyChanges {
+                            target: thumb
+                            color: "#9999c0" // Brightest color for pressed
+                        }
+                    }
+                ]
             }
         }
     }
