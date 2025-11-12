@@ -116,7 +116,7 @@ Item{
                     anchors.margins: 10
                     source: "qrc:/Hamilton/images/controls/play.png"
                     width: parent.width / 3
-                    height: parent.height
+                    height: parent.height - 20
                     fillMode: Image.PreserveAspectFit
                     smooth: true
                     opacity: 0.8
