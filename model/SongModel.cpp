@@ -53,9 +53,12 @@ void SongModel::setAlbum(const QString& albumTitle)
 {
     if (songsList.contains(albumTitle))
     {
-        m_songs.clear();
-        m_songs = songsList[albumTitle];
-        beginResetModel();
+        clearSongs();
+        beginInsertRows(QModelIndex(), 0, songsList[albumTitle].count() - 1);
+        for(auto& song : songsList[albumTitle]){
+            m_songs = songsList[albumTitle];
+        }
+        endInsertRows();
         emit albumChanged(albumTitle);
     }
 }
