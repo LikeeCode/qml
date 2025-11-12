@@ -27,6 +27,10 @@ void ViewModel::setSongModel(SongModel* model) {
         connect(songModel, &SongModel::albumChanged, this, [this](const QString &album){
             currentAlbum = album;
             emit albumChanged(currentAlbum); });
+
+        connect(songModel, &SongModel::songChanged, this, [this](const Song &song){
+            currentTrack = song.title;
+            emit songChanged(currentTrack); });
     }
 }
 
@@ -34,6 +38,7 @@ void ViewModel::setAlbum(const QString& albumTitle) {
     currentAlbum = albumTitle;
     if (songModel) {
         songModel->setAlbum(currentAlbum);
+        emit songModelChanged();
     }
 }
 
