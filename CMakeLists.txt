@@ -40,6 +40,9 @@ qt_add_qml_module(HamiltonQMLPlayer
         images/hamilton-logo.svg
         images/hamilton-logo.ico
         images/album-cover-default.png
+        images/controls/play.png
+        images/controls/fast-forward.png
+        images/controls/rewind.png
         images/covers/abbey-road.jpg
         images/covers/dark-side-of-the-moon.jpg
         images/covers/thriller.jpg

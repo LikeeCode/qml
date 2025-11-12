@@ -29,6 +29,7 @@ Item{
             font.pixelSize: 24
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
+            text: "No song selected"
         }
 
         Image{
@@ -49,36 +50,31 @@ Item{
             }
         }
 
-        Item{
-            id: playerControls
+        Row{
+            id: controls
             anchors.bottom: parent.bottom
             width: parent.width
-            height: 150
+            spacing: 0
 
-            Row{
-                anchors.fill: parent
-                spacing: 20
+            Image{
+                source: "qrc:/Hamilton/images/controls/rewind.png"
+                width: parent.width / 3
+                height: 100
+                fillMode: Image.PreserveAspectFit
+            }
 
-                Button{
-                    text: "⏮️"
-                    font.pixelSize: 32
-                    width: 80
-                    height: 80
-                }
+            Image{
+                source: "qrc:/Hamilton/images/controls/play.png"
+                width: parent.width / 3
+                height: 100
+                fillMode: Image.PreserveAspectFit
+            }
 
-                Button{
-                    text: "▶️"
-                    font.pixelSize: 32
-                    width: 80
-                    height: 80
-                }
-
-                Button{
-                    text: "⏭️"
-                    font.pixelSize: 32
-                    width: 80
-                    height: 80
-                }
+            Image{
+                source: "qrc:/Hamilton/images/controls/fast-forward.png"
+                width: parent.width / 3
+                height: 100
+                fillMode: Image.PreserveAspectFit
             }
         }
     }
