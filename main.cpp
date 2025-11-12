@@ -3,10 +3,12 @@
 #include <QQmlContext>
 #include <QQmlEngine>
 #include <QIcon>
+#include <QtQml> // For qmlRegisterUncreatableType
 
 #include "model/AlbumModel.h"
 #include "model/PlayerModel.h"
 #include "model/SongModel.h"
+#include "model/MediaList.h" // Include the header with our structs
 
 #include "viewModel/ViewModel.h"
 
@@ -15,14 +17,15 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
     app.setWindowIcon(QIcon("qrc:/Hamilton/images/hamilton-logo.ico"));
 
-    QQmlApplicationEngine engine;
-    QObject::connect(
-        &engine,
-        &QQmlApplicationEngine::objectCreationFailed,
-        &app,
-        []()
-        { QCoreApplication::exit(-1); },
-        Qt::QueuedConnection);
+    // Register our value types for signal/slot communication
+    qRegisterMetaType<Album>("Album");
+    qRegisterMetaType<Song>("Song");
+    qRegisterMetaType<QList<Song>>("QList<Song>");
+
+    // Make the type names known to QML. They are "uncreatable" from QML,
+    // but this allows QML to understand them when they arrive from C++.
+    qmlRegisterUncreatableType<Album>("Hamilton.Models", 1, 0, "Album", "Cannot create Album in QML");
+    qmlRegisterUncreatableType<Song>("Hamilton.Models", 1, 0, "Song", "Cannot create Song in QML");
 
     // Register C++ model types for use from QML if needed (optional).
     // Use a module name for grouping
@@ -45,6 +48,7 @@ int main(int argc, char *argv[])
     viewModel->setPlayerModel(playerModel);
     viewModel->setSongModel(songModel);
     
+    QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("viewModel", viewModel);
 
     const QUrl url("qrc:/Hamilton/main.qml");
