@@ -94,17 +94,31 @@ Item{
         }
     }
 
-    ScrollView{
-        id: albumScrollView
+    ListView{
+        id: albumsListView
         anchors.fill: parent
-        contentWidth: parent.width
+        clip: true
 
-        ListView{
-            id: albumsListView
-            width: parent.width
-            height: parent.height
-            model: viewModel.getAlbumModel()
-            delegate: albumDelegate
+        model: viewModel.getAlbumModel()
+        delegate: albumDelegate
+
+        ScrollBar.vertical: ScrollBar {
+            width: 14
+            policy: ScrollBar.AlwaysOn
+            hoverEnabled: false // <-- Add this line
+
+            background: Rectangle {
+                color: "#2E2D3C"
+                implicitWidth: 14
+            }
+
+            contentItem: Rectangle {
+                implicitWidth: 8
+                anchors.horizontalCenter: parent.horizontalCenter
+                color: "#7777a8"
+                radius: 4
+                opacity: 0.75
+            }
         }
     }
 }
