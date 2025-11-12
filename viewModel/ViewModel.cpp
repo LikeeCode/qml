@@ -35,11 +35,14 @@ void ViewModel::setSongModel(SongModel* model) {
 }
 
 void ViewModel::setAlbum(const QString& albumTitle) {
-    currentAlbum = albumTitle;
+    auto info = albumModel->getAlbumInfo(albumTitle);
+    currentAlbum = info.title;
+    currentAlbumSongs = songsList[albumTitle];
     if (songModel) {
         songModel->setAlbum(currentAlbum);
         emit songModelChanged();
     }
+    emit albumChanged(info.title, info.artist, info.year, info.cover);
 }
 
 void ViewModel::playTrack(const QString& trackTitle) {

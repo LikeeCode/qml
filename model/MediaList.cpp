@@ -1,10 +1,10 @@
 #include "MediaList.h"
 
 QHash<QString, Album> albumsList{
-    {"Abbey Road", {"Abbey Road", "The Beatles", 1969, "images/album-cover-default.png"}},
-    {"The Dark Side of the Moon", {"The Dark Side of the Moon", "Pink Floyd", 1973, "images/album-cover-default.png"}},
-    {"Thriller", {"Thriller", "Michael Jackson", 1982, "images/album-cover-default.png"}},
-    {"Back in Black", {"Back in Black", "AC/DC", 1980, "images/album-cover-default.png"}}};
+    {"Abbey Road", {"Abbey Road", "The Beatles", 1969, "images/covers/abbey-road.jpg"}},
+    {"The Dark Side of the Moon", {"The Dark Side of the Moon", "Pink Floyd", 1973, "images/covers/dark-side-of-the-moon.jpg"}},
+    {"Thriller", {"Thriller", "Michael Jackson", 1982, "images/covers/thriller.jpg"}},
+    {"Back in Black", {"Back in Black", "AC/DC", 1980, "images/covers/back-in-black.jpg"}}};
 
 QHash<QString, QList<Song>> songsList{
     {"Abbey Road", {{"Come Together", "The Beatles", 259, "Abbey Road"}, {"Something", "The Beatles", 182, "Abbey Road"}, {"Octopus's Garden", "The Beatles", 171, "Abbey Road"}, {"Here Comes the Sun", "The Beatles", 185, "Abbey Road"}}},

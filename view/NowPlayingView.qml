@@ -5,6 +5,14 @@ import Hamilton.Models 1.0
 Item{
     id: root
 
+    function updateAlbum(title, artist, year, cover){
+        albumCover.source = "qrc:/Hamilton/" + cover
+    }
+
+    function updateSong(song, artist, duration){
+        nowPlayingTitle.text = "Now Playing: " + song
+    }
+
     Rectangle{
         id: header
         anchors.fill: parent
@@ -20,7 +28,7 @@ Item{
             width: parent.width
             height: 50
 
-            text: "Now Playing"
+            text: "Now Playing: "
             color: 'white'
             font.pixelSize: 24
         }
@@ -35,8 +43,12 @@ Item{
 
             Connections {
                 target: viewModel
-                onActiveAlbumCoverChanged: function(newAlbumCover) {
-                    // source = newAlbumCover ? "qrc:/Hamilton/" + newAlbumCover : ""
+                onAlbumChanged: function(title, artist, year, cover) {
+                    updateAlbum(title, artist, year, cover)
+                }
+                onSongChanged: function(song, artist, duration, album) {
+                    isActive = (title === song)
+                    updateSong(song, artist, duration)
                 }
             }
         }

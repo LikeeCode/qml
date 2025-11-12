@@ -72,15 +72,15 @@ void AlbumModel::removeAlbum(const QString &title)
     }
 }
 
-QString AlbumModel::getAlbumCover(const QString &title) const
+Album AlbumModel::getAlbumInfo(const QString &title) const
 {
-    if(m_albums.isEmpty()) return QString();
+    if(m_albums.isEmpty()) return {};
 
     for (const Album &album : m_albums) {
         if (album.title == title) {
-            return album.cover;
+            return album;
         }
     }
 
-    return QString(); // Return an empty string if album not found
+    return {};
 }
