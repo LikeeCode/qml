@@ -26,20 +26,20 @@ void ViewModel::setSongModel(SongModel* model) {
 }
 
 void ViewModel::setAlbum(const QString& albumTitle) {
-    auto info = albumModel->getAlbumInfo(albumTitle);
-    currentAlbum = info.title;
+    auto album = albumModel->getAlbum(albumTitle);
+    currentAlbum = album.title;
     currentAlbumSongs = songsList[albumTitle];
     if (songModel) {
         songModel->setAlbum(currentAlbum);
     }
-    emit albumChanged(info.title, info.artist, info.year, info.cover);
+    emit albumChanged(album);
 }
 
 void ViewModel::playTrack(const QString& trackTitle) {
     currentTrack = trackTitle;
     for(const auto& song : currentAlbumSongs){
         if(currentTrack == song.title){
-            emit songChanged(song.title, song.artist, song.duration, song.album);
+            emit songChanged(song);
             break;
         }
     }

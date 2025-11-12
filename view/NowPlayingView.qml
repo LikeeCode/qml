@@ -15,11 +15,11 @@ Item{
 
     Connections {
         target: viewModel
-        function onAlbumChanged(title, artist, year, cover) {
-            updateAlbum(title, artist, year, cover)
+        function onAlbumChanged(album) {
+            updateAlbum(album.title, album.artist, album.year, album.cover)
         }
-        function onSongChanged(song, artist, duration, album) {
-            updateSong(song, artist, duration)
+        function onSongChanged(song) {
+            updateSong(song.title, song.artist, song.duration)
         }
     }
 

@@ -22,8 +22,8 @@ public:
     explicit ViewModel(QObject *parent = nullptr);
 
 signals:
-    void albumChanged(const QString& title, const QString& artist, int year, const QString& cover);
-    void songChanged(const QString& title, const QString& artist, int duration, const QString& album);
+    void albumChanged(const Album& album);
+    void songChanged(const Song& song);
     void songModelChanged();
 
 public slots:

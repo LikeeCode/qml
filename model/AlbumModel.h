@@ -25,7 +25,7 @@ public:
     void addAlbum(const Album &album);
     void addAlbum(const QString &title, const QString &artist, int year, const QString &cover);
     void removeAlbum(const QString &title);
-    Album getAlbumInfo(const QString &title) const;
+    Album getAlbum(const QString &title) const;
 
 private:
     QList<Album> m_albums;

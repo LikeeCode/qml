@@ -72,7 +72,7 @@ void AlbumModel::removeAlbum(const QString &title)
     }
 }
 
-Album AlbumModel::getAlbumInfo(const QString &title) const
+Album AlbumModel::getAlbum(const QString &title) const
 {
     if(m_albums.isEmpty()) return {};
 

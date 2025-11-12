@@ -35,8 +35,8 @@ Item{
 
                 Connections {
                     target: viewModel
-                    function onSongChanged(song, artist, duration, album) {
-                        isActive = (title === song)
+                    function onSongChanged(song) {
+                        isActive = (title === song.title)
                         updateColor()
                     }
                 }
