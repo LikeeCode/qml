@@ -26,7 +26,6 @@ public:
     void addSong(const QString &title, const QString &artist, int duration, const QString &album);
     
     void setAlbum(const QString& album);
-    void setSong(const QString& song);
 
 signals:
     void albumChanged(const QString& album);

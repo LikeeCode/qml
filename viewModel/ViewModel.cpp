@@ -22,16 +22,7 @@ void ViewModel::setSongModel(SongModel* model) {
     if (songModel == model) return;
     if (songModel) songModel->deleteLater(); // or allow ownership transfer
     songModel = model;
-    if (songModel){
-        songModel->setParent(this);
-        connect(songModel, &SongModel::albumChanged, this, [this](const QString &album){
-            currentAlbum = album;
-            emit albumChanged(currentAlbum); });
-
-        connect(songModel, &SongModel::songChanged, this, [this](const Song &song){
-            currentTrack = song.title;
-            emit songChanged(currentTrack); });
-    }
+    if (songModel) songModel->setParent(this);
 }
 
 void ViewModel::setAlbum(const QString& albumTitle) {
@@ -40,16 +31,17 @@ void ViewModel::setAlbum(const QString& albumTitle) {
     currentAlbumSongs = songsList[albumTitle];
     if (songModel) {
         songModel->setAlbum(currentAlbum);
-        emit songModelChanged();
     }
     emit albumChanged(info.title, info.artist, info.year, info.cover);
 }
 
 void ViewModel::playTrack(const QString& trackTitle) {
     currentTrack = trackTitle;
-    if (songModel)
-    {
-        songModel->setSong(currentTrack);
+    for(const auto& song : currentAlbumSongs){
+        if(currentTrack == song.title){
+            emit songChanged(song.title, song.artist, song.duration, song.album);
+            break;
+        }
     }
 }
 

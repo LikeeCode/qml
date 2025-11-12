@@ -10,14 +10,12 @@ Item{
     }
 
     function updateSong(song, artist, duration){
-        nowPlayingTitle.text = "Now Playing: " + song
+        nowPlayingTitle.text = song
     }
 
     Rectangle{
         id: header
         anchors.fill: parent
-        // width: parent.width
-        // height: parent.height
         color: '#373647'
         border.color: '#4a4a64'
         border.width: 1
@@ -27,27 +25,25 @@ Item{
             anchors.top: parent.top
             width: parent.width
             height: 50
-
-            text: "Now Playing: "
             color: 'white'
             font.pixelSize: 24
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
         }
 
         Image{
             id: albumCover
-            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.top: nowPlayingTitle.bottom
             source: "qrc:/Hamilton/images/album-cover-default.png"
-            // source: viewModel.activeAlbumCover ? "qrc:/Hamilton/" + viewModel.activeAlbumCover : ""
-            width: 300
+            width: parent.width
             fillMode: Image.PreserveAspectFit
 
             Connections {
                 target: viewModel
-                onAlbumChanged: function(title, artist, year, cover) {
+                function onAlbumChanged(title, artist, year, cover) {
                     updateAlbum(title, artist, year, cover)
                 }
-                onSongChanged: function(song, artist, duration, album) {
-                    isActive = (title === song)
+                function onSongChanged(song, artist, duration, album) {
                     updateSong(song, artist, duration)
                 }
             }

@@ -29,7 +29,7 @@ Item{
 
             Connections {
                 target: viewModel
-                onAlbumChanged: function(newAlbum) {
+                function onAlbumChanged(newAlbum) {
                     isActive = (title === newAlbum)
                     updateColor()
                 }

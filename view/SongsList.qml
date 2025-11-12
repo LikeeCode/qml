@@ -27,13 +27,13 @@ Item{
 
                 Connections {
                     target: viewModel
-                    onSongChanged: function(song) {
+                    function onSongChanged(song, artist, duration, album) {
                         isActive = (title === song)
                         updateColor()
                     }
                 }
 
-                width: parent.width
+                width: header.width
                 height: 100
                 color: {
                     updateColor()

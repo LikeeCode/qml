@@ -45,6 +45,7 @@ public slots:
 private:
     QString currentAlbum;
     QString currentAlbumCover;
+    QList<Song> currentAlbumSongs;
     QString currentTrack;
     int currentPosition{0};
 };

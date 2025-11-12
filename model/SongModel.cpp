@@ -63,18 +63,6 @@ void SongModel::setAlbum(const QString& albumTitle)
     }
 }
 
-void SongModel::setSong(const QString& songTitle)
-{
-    for (const Song& song : m_songs)
-    {
-        if (song.title == songTitle)
-        {
-            emit songChanged(song);
-            break;
-        }
-    }
-}
-
 void SongModel::clearSongs()
 {
     beginResetModel();
