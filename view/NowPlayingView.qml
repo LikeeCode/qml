@@ -66,32 +66,56 @@ Item{
                 anchors.bottom: parent.bottom
                 anchors.bottomMargin: parent.height * 0.03  // proportional bottom margin
                 width: parent.width
-                height: Math.max(48, parent.height * 0.18)  // flexible controls height
+                height: Math.max(48, parent.height * 0.1)  // flexible controls height
 
                 spacing: 0
 
                 Image{
+                    anchors.margins: 10
                     source: "qrc:/Hamilton/images/controls/rewind.png"
                     width: parent.width / 3
-                    height: parent.height
+                    height: parent.height - 20
                     fillMode: Image.PreserveAspectFit
                     smooth: true
+
+                    MouseArea{
+                        anchors.fill: parent
+                        onClicked: {
+                            viewModel.previousTrack()
+                        }
+                    }
                 }
 
                 Image{
+                    anchors.margins: 10
                     source: "qrc:/Hamilton/images/controls/play.png"
                     width: parent.width / 3
-                    height: parent.height
+                    height: parent.height - 20
                     fillMode: Image.PreserveAspectFit
                     smooth: true
+
+                    MouseArea{
+                        anchors.fill: parent
+                        onClicked: {
+                            viewModel.playTrack(nowPlayingTitle.text)
+                        }
+                    }
                 }
 
                 Image{
+                    anchors.margins: 10
                     source: "qrc:/Hamilton/images/controls/fast-forward.png"
                     width: parent.width / 3
-                    height: parent.height
+                    height: parent.height - 20
                     fillMode: Image.PreserveAspectFit
                     smooth: true
+
+                    MouseArea{
+                        anchors.fill: parent
+                        onClicked: {
+                            viewModel.nextTrack()
+                        }
+                    }
                 }
             }
         }
