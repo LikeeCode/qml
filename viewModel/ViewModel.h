@@ -17,6 +17,7 @@ class ViewModel : public QObject
 
 public:
     explicit ViewModel(QObject *parent = nullptr);
+    ~ViewModel();
 
 signals:
     void albumChanged(const Album& album);

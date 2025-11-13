@@ -37,13 +37,6 @@ int main(int argc, char *argv[])
     ViewModel *viewModel = new ViewModel(&app);
     QQmlEngine::setObjectOwnership(viewModel, QQmlEngine::CppOwnership);
     
-    // Create and attach models to the ViewModel
-    AlbumModel *albumModel = new AlbumModel();
-    SongModel *songModel = new SongModel();
-    
-    viewModel->setAlbumModel(albumModel);
-    viewModel->setSongModel(songModel);
-    
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("viewModel", viewModel);
 

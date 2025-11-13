@@ -2,6 +2,13 @@
 
 ViewModel::ViewModel(QObject *parent) : QObject(parent)
 {
+    albumModel = new AlbumModel();
+    songModel = new SongModel();
+}
+
+ViewModel::~ViewModel() {
+    if (albumModel) albumModel->deleteLater();
+    if (songModel) songModel->deleteLater();
 }
 
 void ViewModel::setAlbumModel(AlbumModel* model) {
