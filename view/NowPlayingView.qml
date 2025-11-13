@@ -33,7 +33,6 @@ Item{
         Column{
             id: content
             anchors.fill: parent
-            spacing: 0
 
             Text{
                 id: nowPlayingTitle
@@ -56,6 +55,7 @@ Item{
                 source: "qrc:/Hamilton/images/album-cover-default.png"
                 fillMode: Image.PreserveAspectFit
                 smooth: true
+                anchors.bottomMargin: 20
                 // width is anchored via left/right; height is determined by anchors
             }
 
@@ -64,15 +64,13 @@ Item{
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.bottom: parent.bottom
-                anchors.bottomMargin: parent.height * 0.03  // proportional bottom margin
+                anchors.bottomMargin: 10
                 width: parent.width
                 height: Math.max(48, parent.height * 0.1)  // flexible controls height
 
-                spacing: 0
-
                 Image{
                     id: previousButton
-                    anchors.margins: 10
+                    // anchors.margins: 10
                     source: "qrc:/Hamilton/images/controls/rewind.png"
                     width: parent.width / 3
                     height: parent.height - 20
