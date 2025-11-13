@@ -11,13 +11,6 @@ void ViewModel::setAlbumModel(AlbumModel* model) {
     if (albumModel) albumModel->setParent(this);
 }
 
-void ViewModel::setPlayerModel(PlayerModel* model) {
-    if (playerModel == model) return;
-    if (playerModel) playerModel->deleteLater(); // or allow ownership transfer
-    playerModel = model;
-    if (playerModel) playerModel->setParent(this);
-}
-
 void ViewModel::setSongModel(SongModel* model) {
     if (songModel == model) return;
     if (songModel) songModel->deleteLater(); // or allow ownership transfer

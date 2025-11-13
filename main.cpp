@@ -6,7 +6,6 @@
 #include <QtQml> // For qmlRegisterUncreatableType
 
 #include "model/AlbumModel.h"
-#include "model/PlayerModel.h"
 #include "model/SongModel.h"
 #include "model/MediaList.h" // Include the header with our structs
 
@@ -30,7 +29,6 @@ int main(int argc, char *argv[])
     // Register C++ model types for use from QML if needed (optional).
     // Use a module name for grouping
     qmlRegisterType<AlbumModel>("Hamilton.Models", 1, 0, "AlbumModel");
-    qmlRegisterType<PlayerModel>("Hamilton.Models", 1, 0, "PlayerModel");
     qmlRegisterType<SongModel>("Hamilton.Models", 1, 0, "SongModel");
 
     // Create the ViewModel on the heap and give it the application as parent so
@@ -41,11 +39,9 @@ int main(int argc, char *argv[])
     
     // Create and attach models to the ViewModel
     AlbumModel *albumModel = new AlbumModel();
-    PlayerModel *playerModel = new PlayerModel();
     SongModel *songModel = new SongModel();
     
     viewModel->setAlbumModel(albumModel);
-    viewModel->setPlayerModel(playerModel);
     viewModel->setSongModel(songModel);
     
     QQmlApplicationEngine engine;
