@@ -92,9 +92,9 @@ Item {
             // Use AsNeeded in production, but AlwaysOn is good for testing
             policy: ScrollBar.AlwaysOn
 
-            // The track (background of the scrollbar)
             background: Rectangle {
-                color: "#2E2D3C"
+                color: '#56567a'
+                z: 50
             }
 
             // The thumb (the draggable part)
