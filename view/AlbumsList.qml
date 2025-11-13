@@ -82,7 +82,7 @@ Item {
         anchors.fill: parent
         clip: true
 
-        model: viewModel.getAlbumModel()
+        model: viewModel.albumModel
         delegate: albumDelegate
 
         // --- Final ScrollBar with Separate Increase/Decrease Areas ---

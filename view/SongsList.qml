@@ -115,7 +115,7 @@ Item{
                 id: songsListView
                 width: parent.width
                 height: parent.height
-                model: viewModel.getSongModel()
+                model: viewModel.songModel
                 delegate: songDelegate
             }
         }
