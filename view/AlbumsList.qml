@@ -85,49 +85,89 @@ Item {
         model: viewModel.getAlbumModel()
         delegate: albumDelegate
 
-        // --- Correct ScrollBar Styling ---
+        // --- Final ScrollBar with Separate Increase/Decrease Areas ---
         ScrollBar.vertical: ScrollBar {
             id: vbar
             width: 14
-            // Use AsNeeded in production, but AlwaysOn is good for testing
-            policy: ScrollBar.AlwaysOn
+            policy: ScrollBar.AsNeeded
+            hoverEnabled: true
 
-            background: Rectangle {
-                color: '#56567a'
-                z: 50
-            }
-
-            // The thumb (the draggable part)
+            // The thumb is the draggable part. Its styling is self-contained.
+            // The ScrollBar itself handles the dragging logic for its contentItem.
             contentItem: Rectangle {
                 id: thumb
                 width: 8
                 anchors.horizontalCenter: parent.horizontalCenter
-                radius: 0
-                z: 100
+                z: 2 // Ensure thumb is visually on top of the track background
 
-                // 1. Set the default appearance
                 color: "#7777a8"
 
-                // 2. Define the different visual states
                 states: [
                     State {
                         name: "HOVERED"
-                        // This state is active when hovered but NOT pressed
                         when: vbar.hovered && !vbar.pressed
-                        PropertyChanges {
-                            target: thumb
-                            color: "#8888b9" // A color between normal and pressed
-                        }
+                        PropertyChanges { target: thumb; color: "#8888b9" }
                     },
                     State {
                         name: "PRESSED"
                         when: vbar.pressed
-                        PropertyChanges {
-                            target: thumb
-                            color: "#9999c0" // Brightest color for pressed
-                        }
+                        PropertyChanges { target: thumb; color: "#9999c0" }
                     }
                 ]
+
+                transitions: [
+                    Transition {
+                        ColorAnimation { duration: 150; easing.type: Easing.InOutQuad }
+                    }
+                ]
+            }
+
+            // The background is now a container for the track and the click handlers.
+            background: Item {
+                id: backgroundContainer
+                z: 1 // Ensure background is below the thumb
+
+                // 1. The visible track rectangle that sits behind everything.
+                Rectangle {
+                    anchors.fill: parent
+                    color: "#2E2D3C"
+                }
+
+                // The 'increase' (page down) click area.
+                Rectangle {
+                    id: increaseArea
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    anchors.bottom: parent.bottom
+                    height: width
+                    color: "#4a4a64"
+                    z:1
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            vbar.increase()
+                        }
+                    }
+                }
+
+                // The 'decrease' (page up) click area.
+                Rectangle {
+                    id: decreaseArea
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    anchors.top: parent.top
+                    height: width
+                    color: "#4a4a64"
+                    z:1
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            vbar.decrease()
+                        }
+                    }
+                }
             }
         }
     }
