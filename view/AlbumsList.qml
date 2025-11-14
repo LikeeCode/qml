@@ -59,8 +59,8 @@ Item {
 
                 Column {
                     spacing: 5
-                    Text { text: title; font.bold: true; color: '#ffffff' }
-                    Text { text: artist + " (" + year + ")"; color: '#cccccc' }
+                    Text { text: title; font.bold: true; color: Theme.textPrimary }
+                    Text { text: artist + " (" + year + ")"; color: Theme.textSecondary }
                 }
             }
 
@@ -68,10 +68,10 @@ Item {
                 anchors.fill: parent
                 hoverEnabled: true
                 onClicked: { viewModel.setAlbum(title) }
-                onEntered: { if (!isActive) color = '#666688' }
-                onExited: { updateColor() }
-                onPressed: { if (!isActive) color = '#222244' }
-                onReleased: { if (!isActive) color = '#666688' }
+                onEntered: { if (!isActive) parent.color = Theme.itemBackgroundHover }
+                onExited: { parent.updateColor() }
+                onPressed: { if (!isActive) parent.color = Theme.itemBackgroundPressed }
+                onReleased: { if (!isActive) parent.color = Theme.itemBackgroundHover }
             }
         }
     }
