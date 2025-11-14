@@ -1,5 +1,5 @@
 import QtQuick
-import QtGraphicalEffects
+import Qt5Compat.GraphicalEffects
 
 Item {
     id: root
@@ -15,20 +15,20 @@ Item {
 
     Image {
         id: sourceImage
-        visible: false // The original image is not visible
+        anchors.fill: parent
+        visible: false
+        fillMode: Image.PreserveAspectFit
     }
 
-    Colorize {
+    ColorOverlay {
         id: colorizedImage
         anchors.fill: sourceImage
         source: sourceImage
         color: root.color
-        hue: 1.0
-        saturation: 0.0
-        lightness: 0.0
     }
 
     MouseArea {
+        id: mouseArea
         anchors.fill: parent
         hoverEnabled: true
         onClicked: root.clicked()
@@ -41,12 +41,12 @@ Item {
     states: [
         State {
             name: "pressed"
-            when: parent.MouseArea.pressed
+            when: mouseArea.pressed
             PropertyChanges { target: root; color: root.pressedColor }
         },
         State {
             name: "hovered"
-            when: parent.MouseArea.containsMouse
+            when: mouseArea.containsMouse && !mouseArea.pressed
             PropertyChanges { target: root; color: root.hoverColor }
         }
     ]

@@ -9,6 +9,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt6 6.8 COMPONENTS Quick Core Gui REQUIRED)
+find_package(Qt6 OPTIONAL_COMPONENTS Core5Compat)
 
 qt_add_executable(HamiltonQMLPlayer
     main.cpp
@@ -51,3 +52,11 @@ qt_add_qml_module(HamiltonQMLPlayer
 
 target_link_libraries(HamiltonQMLPlayer
     PRIVATE Qt6::Quick Qt6::Core Qt6::Gui)
+
+# Link Core5Compat if available (for QtGraphicalEffects)
+if(TARGET Qt6::Core5Compat)
+    target_link_libraries(HamiltonQMLPlayer PRIVATE Qt6::Core5Compat)
+    message(STATUS "Qt5Compat found - QtGraphicalEffects will be available")
+else()
+    message(WARNING "Qt5Compat not found - QtGraphicalEffects will not be available. Install it via Qt Maintenance Tool.")
+endif()
