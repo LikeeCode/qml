@@ -36,6 +36,7 @@ qt_add_qml_module(HamiltonQMLPlayer
         view/AlbumsList.qml
         view/NowPlayingView.qml
         view/SongsList.qml
+        theme/Theme.qml
     RESOURCES
         images/hamilton-logo.svg
         images/hamilton-logo.ico
@@ -48,6 +49,7 @@ qt_add_qml_module(HamiltonQMLPlayer
         images/covers/thriller.jpg
         images/covers/back-in-black.jpg
         fonts/Orbitron-Regular.ttf
+        theme/qmldir
 )
 
 target_link_libraries(HamiltonQMLPlayer

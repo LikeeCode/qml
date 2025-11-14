@@ -1,16 +1,27 @@
 import QtQuick
 import QtQuick.Window
 import QtQuick.Controls
+import "theme"
+
 Window {
     width: 1280
     height: 720
     visible: true
     title: "Hamilton QML Player"
-    color: '#363636'
+    color: Theme.backgroundColor
 
     FontLoader {
         id: orbitronRegular
         source: "qrc:/Hamilton/fonts/Orbitron-Regular.ttf"
+    }
+
+    // Theme toggle button (top-right corner)
+    Button {
+        text: Theme.isDarkMode ? "☀️ Light" : "🌙 Dark"
+        anchors.top: parent.top
+        anchors.right: parent.right
+        anchors.margins: 10
+        onClicked: Theme.toggleTheme()
     }
 
     Image{

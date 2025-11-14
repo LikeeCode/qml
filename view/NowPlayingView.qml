@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Controls
 import Hamilton.Models 1.0
 import "components" // Import the IconButton component
+import "../theme"
 
 Item{
     id: root
@@ -89,6 +90,7 @@ Item{
                     hoverColor: "#ffffff"
                     pressedColor: "#aaaaaa"
                     onClicked: {
+                        Theme.toggleTheme() // Toggle theme on play button press
                         viewModel.playTrack() // or pause/play toggle logic
                     }
                 }

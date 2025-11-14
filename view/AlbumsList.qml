@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Controls
 import Hamilton.Models 1.0
+import "../theme"
 
 Item {
     id: root
@@ -8,8 +9,8 @@ Item {
     // The main background
     Rectangle {
         anchors.fill: parent
-        color: '#373647'
-        border.color: '#4a4a64'
+        color: Theme.panelBackground
+        border.color: Theme.panelBorder
         border.width: 1
     }
 
@@ -23,16 +24,16 @@ Item {
             height: 100
             color: {
                 if (isActive) {
-                    '#7777a8'
+                    Theme.itemBackgroundActive
                 } else {
-                    index % 2 === 0 ? '#444466' : '#3b3b5b'
+                    index % 2 === 0 ? Theme.itemBackground1 : Theme.itemBackground2
                 }
             }
-            border.color: '#4a4a64'
+            border.color: Theme.panelBorder
             border.width: 1
 
             function updateColor() {
-                color = isActive ? '#7777a8' : (index % 2 === 0 ? '#444466' : '#3b3b5b')
+                color = isActive ? Theme.itemBackgroundActive : (index % 2 === 0 ? Theme.itemBackground1 : Theme.itemBackground2)
             }
 
             Connections {
