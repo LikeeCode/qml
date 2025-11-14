@@ -45,6 +45,7 @@ qt_add_qml_module(HamiltonQMLPlayer
         images/covers/dark-side-of-the-moon.jpg
         images/covers/thriller.jpg
         images/covers/back-in-black.jpg
+        fonts/Orbitron-Regular.ttf
 )
 
 target_link_libraries(HamiltonQMLPlayer

@@ -8,6 +8,11 @@ Window {
     title: "Hamilton QML Player"
     color: '#363636'
 
+    FontLoader {
+        id: orbitronRegular
+        source: "qrc:/Hamilton/fonts/Orbitron-Regular.ttf"
+    }
+
     Image{
         id: logo
         source: "images/hamilton-logo.ico"

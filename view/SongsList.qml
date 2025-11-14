@@ -65,12 +65,16 @@ Item{
                             Text{
                                 text: title
                                 font.bold: true
+                                font.family: "Orbitron"
+                                font.pixelSize: 14
                                 color: '#ffffff'
                                 width: 3 * parent.width / 4
                             }
                             Text{
                                 text: formatTime(duration)
                                 font.bold: true
+                                font.family: "Orbitron"
+                                font.pixelSize: 14
                                 color: '#bebebe'
                                 width: parent.width / 4
                             }
