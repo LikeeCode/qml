@@ -8,7 +8,7 @@ set(CMAKE_AUTOUIC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 6.8 COMPONENTS Quick Core REQUIRED)
+find_package(Qt6 6.8 COMPONENTS Quick Core Gui REQUIRED)
 
 qt_add_executable(HamiltonQMLPlayer
     main.cpp
@@ -31,6 +31,7 @@ qt_add_qml_module(HamiltonQMLPlayer
     URI Hamilton
     VERSION 1.0
     QML_FILES main.qml
+        view/components/IconButton.qml
         view/AlbumsList.qml
         view/NowPlayingView.qml
         view/SongsList.qml
@@ -49,4 +50,4 @@ qt_add_qml_module(HamiltonQMLPlayer
 )
 
 target_link_libraries(HamiltonQMLPlayer
-    PRIVATE Qt6::Quick Qt6::Core)
+    PRIVATE Qt6::Quick Qt6::Core Qt6::Gui)
